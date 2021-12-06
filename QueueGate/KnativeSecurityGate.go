@@ -1,10 +1,9 @@
-package KnativeSecurityGate
-
+package QueueGate
 
 import (
 	"net/http"
-	"strings"
-  "go.uber.org/zap"
+
+	"go.uber.org/zap"
 )
 
 func GateHandler(logger *zap.SugaredLogger, h http.Handler) http.Handler {
@@ -19,15 +18,15 @@ func GateHandler(logger *zap.SugaredLogger, h http.Handler) http.Handler {
 		xForwardedFor := r.Header.Get("x-forwarded-for")
 		cacheControl := r.Header.Get("cache-control")
 		via := r.Header.Get("via")
-    
-    logger.Info("DH> userAgent ", userAgent)
-    logger.Info("DH> contentEncoding ", contentEncoding)
-    logger.Info("DH> transferEncoding ", transferEncoding)
-    logger.Info("DH> keepAlive ", keepAlive)
-    logger.Info("DH> connection ", connection)
-    logger.Info("DH> xForwardedFor ", xForwardedFor)
-    logger.Info("DH> cacheControl ", cacheControl)
-    logger.Info("DH> via ", via)
-		
+
+		logger.Info("DH> userAgent ", userAgent)
+		logger.Info("DH> contentEncoding ", contentEncoding)
+		logger.Info("DH> transferEncoding ", transferEncoding)
+		logger.Info("DH> keepAlive ", keepAlive)
+		logger.Info("DH> connection ", connection)
+		logger.Info("DH> xForwardedFor ", xForwardedFor)
+		logger.Info("DH> cacheControl ", cacheControl)
+		logger.Info("DH> via ", via)
+
 	})
 }
