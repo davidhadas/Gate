@@ -14,7 +14,7 @@ func GateHandler(logger *zap.SugaredLogger, h http.Handler) http.Handler {
 		for name, values := range r.Header {
 			// Loop over all values for the name.
 			for _, value := range values {
-				logger.Info("%s: %s", name, value)
+				logger.Infof("%s: %s", name, value)
 			}
 		}
 		/*
