@@ -1,7 +1,12 @@
 package main
 
-import "github.com/davidhadas/knativesecuritygate/queuegate"
+import (
+	"fmt"
+
+	"github.com/davidhadas/knativesecuritygate/queuegate"
+)
 
 func main() {
-	queuegate.Hello()
+	str := queuegate.Hello()
+	fmt.Println(str)
 }
