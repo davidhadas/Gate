@@ -76,13 +76,13 @@ func GateHandler(logger *zap.SugaredLogger, h http.Handler) http.Handler {
 			allHeaderKeys.WriteString(k)
 			allHeaderVals.WriteString(val)
 			switch {
-			case strings.HasPrefix(k, "accept"):
+			case strings.HasPrefix(k, "Accept"):
 				acceptHeaderVals.WriteString(val)
-			case strings.HasPrefix(k, "content"):
+			case strings.HasPrefix(k, "Content"):
 				contentHeaderVals.WriteString(val)
 			case k == "User-Agent":
 				userAgentVals.WriteString(val)
-			case strings.HasPrefix(k, "cookie"):
+			case strings.HasPrefix(k, "Cookie"):
 				cookieVals.WriteString(val)
 			default:
 				otherHeaderVals.WriteString(val)
