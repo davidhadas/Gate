@@ -88,13 +88,13 @@ func GateHandler(logger *zap.SugaredLogger, h http.Handler) http.Handler {
 				otherHeaderVals.WriteString(val)
 			}
 		}
-		logger.Info("allHeaderKeys is %s", allHeaderKeys)
-		logger.Info("allHeaderVals is %s", allHeaderVals)
-		logger.Info("acceptHeaderVals is %s", acceptHeaderVals)
-		logger.Info("contentHeaderVals is %s", contentHeaderVals)
-		logger.Info("userAgentVals is %s", userAgentVals)
-		logger.Info("cookieVals is %s", cookieVals)
-		logger.Info("otherHeaderVals is %s", otherHeaderVals)
+		logger.Infof("allHeaderKeys is %s", allHeaderKeys.String())
+		logger.Infof("allHeaderVals is %s", allHeaderVals.String())
+		logger.Infof("acceptHeaderVals is %s", acceptHeaderVals.String())
+		logger.Infof("contentHeaderVals is %s", contentHeaderVals.String())
+		logger.Infof("userAgentVals is %s", userAgentVals.String())
+		logger.Infof("cookieVals is %s", cookieVals.String())
+		logger.Infof("otherHeaderVals is %s", otherHeaderVals.String())
 
 		// Create a sorted slice of all query leys
 		query := r.URL.Query()
@@ -107,12 +107,12 @@ func GateHandler(logger *zap.SugaredLogger, h http.Handler) http.Handler {
 			if ok {
 				val = strings.Join(vals, " ")
 			}
-			logger.Info("query key and val is %s: %s", k, val)
+			logger.Infof("query key and val is %s: %s", k, val)
 		}
 
 		// RequestURI is the unmodified request-target as sent by the client to a server.
 		requestURI := r.RequestURI
-		logger.Info("requestURI is %s", requestURI)
+		logger.Infof("requestURI: %s, Host: %s, Method: %s, Proto: %s, RemoteAddr: %s, ContentLength %d", requestURI, r.Host, r.Method, r.Proto, r.RemoteAddr, r.ContentLength)
 		/*
 			uriSplits := strings.Split(requestURI, "?")
 			queryFragment
