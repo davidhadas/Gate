@@ -7,6 +7,6 @@ import (
 )
 
 func main() {
-	str := queuegate.Hello()
+	str := queuegate.Talk()
 	fmt.Println(str)
 }
