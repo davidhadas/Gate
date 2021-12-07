@@ -70,8 +70,9 @@ func GateHandler(logger *zap.SugaredLogger, h http.Handler) http.Handler {
 			val := ""
 			vals, ok := r.Header[k]
 			if ok {
-				val = strings.Join(val, " ")
+				val = strings.Join(vals, " ")
 			}
+
 			allHeaderKeys.WriteString(k)
 			allHeaderVals.WriteString(val)
 			switch {
@@ -87,14 +88,26 @@ func GateHandler(logger *zap.SugaredLogger, h http.Handler) http.Handler {
 				otherHeaderVals.WriteString(val)
 			}
 		}
+		logger.Info("allHeaderKeys is %s", allHeaderKeys)
+		logger.Info("allHeaderVals is %s", allHeaderVals)
+		logger.Info("acceptHeaderVals is %s", acceptHeaderVals)
+		logger.Info("contentHeaderVals is %s", contentHeaderVals)
+		logger.Info("userAgentVals is %s", userAgentVals)
+		logger.Info("cookieVals is %s", cookieVals)
+		logger.Info("otherHeaderVals is %s", otherHeaderVals)
 
-		// Create a sorted slice of all header keys
+		// Create a sorted slice of all query leys
 		query := r.URL.Query()
 		keys = getSortedKeys(query)
 
-		// Construct data about header keys and header vals
+		// Construct data about query keys and query vals
 		for _, k := range keys {
-			val := query[k]
+			val := ""
+			vals, ok := r.Header[k]
+			if ok {
+				val = strings.Join(vals, " ")
+			}
+			logger.Info("query key and val is %s: %s", k, val)
 		}
 
 		// RequestURI is the unmodified request-target as sent by the client to a server.
