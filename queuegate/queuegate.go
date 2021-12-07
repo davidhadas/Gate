@@ -10,7 +10,7 @@ func GateHandler(logger *zap.SugaredLogger, h http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		defer h.ServeHTTP(w, r)
 
-		logger.Info("DH> list headers ")
+		logger.Info("DH> NEW NEW list headers ")
 		for name, values := range r.Header {
 			// Loop over all values for the name.
 			for _, value := range values {
