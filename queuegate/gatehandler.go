@@ -88,13 +88,13 @@ func GateHandler(logger *zap.SugaredLogger, h http.Handler) http.Handler {
 				otherHeaderVals.WriteString(val)
 			}
 		}
-		logger.Infof("allHeaderKeys is %s", allHeaderKeys.String())
-		logger.Infof("allHeaderVals is %s", allHeaderVals.String())
-		logger.Infof("acceptHeaderVals is %s", acceptHeaderVals.String())
-		logger.Infof("contentHeaderVals is %s", contentHeaderVals.String())
-		logger.Infof("userAgentVals is %s", userAgentVals.String())
-		logger.Infof("cookieVals is %s", cookieVals.String())
-		logger.Infof("otherHeaderVals is %s", otherHeaderVals.String())
+		logger.Infof("allHeaderKeys: %s", allHeaderKeys.String())
+		logger.Infof("allHeaderVals: %s", allHeaderVals.String())
+		logger.Infof("acceptHeaderVals: %s", acceptHeaderVals.String())
+		logger.Infof("contentHeaderVals: %s", contentHeaderVals.String())
+		logger.Infof("userAgentVals: %s", userAgentVals.String())
+		logger.Infof("cookieVals: %s", cookieVals.String())
+		logger.Infof("otherHeaderVals: %s", otherHeaderVals.String())
 
 		// Create a sorted slice of all query leys
 		query := r.URL.Query()
